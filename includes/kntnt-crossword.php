@@ -1,7 +1,7 @@
 <script>
+    var crosswordData = '<?php echo $crossword_data;?>';
     window.addEventListener('load', function () {
-        var CrosswordPuzzleData = "<?php echo $content;?>";
-        jQuery("<?php echo "#$crossword_id" ?>").CrosswordCompiler(CrosswordPuzzleData, null, {
+        jQuery("<?php echo "#$crossword_id" ?>").CrosswordCompiler(crosswordData, null, {
             ROOTIMAGES: "<?php echo $crossword_plugin_url?>/vendor/CrosswordCompilerApp/CrosswordImages/"
         });
     })
