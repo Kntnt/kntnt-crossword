@@ -53,30 +53,4 @@ class Plugin {
 
 	}
 
-	// A more forgiving version of WP's shortcode_atts().
-	private function shortcode_atts( $pairs, $atts, $shortcode = '' ) {
-
-		$atts = (array) $atts;
-		$out  = [];
-		$pos  = 0;
-		while ( $name = key( $pairs ) ) {
-			$default = array_shift( $pairs );
-			if ( array_key_exists( $name, $atts ) ) {
-				$out[ $name ] = $atts[ $name ];
-			} else if ( array_key_exists( $pos, $atts ) ) {
-				$out[ $name ] = $atts[ $pos ];
-				++ $pos;
-			} else {
-				$out[ $name ] = $default;
-			}
-		}
-
-		if ( $shortcode ) {
-			$out = apply_filters( "shortcode_atts_{$shortcode}", $out, $pairs, $atts, $shortcode );
-		}
-
-		return $out;
-
-	}
-
 }
